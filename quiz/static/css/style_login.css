@@ -32,6 +32,7 @@ h3{
 p{
   color: #8f8f8f;
 }
+
 .navbar{
   padding :0 0 4.5rem;
 }
@@ -55,49 +56,16 @@ p{
   margin:5% 3% 5% 0;
 }
 
-.title-img{
-  width: 40%;
-  margin-left: 40%;
-  padding: 5%;
-}
 
-#features{
-  padding:7% 15%;
-  background-color: #fff;
-  position: relative;
-
-}
-
-.feature-box{
-  text-align: center;
-  padding: 5%;
-}
-
- .icon{
-   color: #1C8AAE;
-   margin-bottom: 1rem;
- }
-
-.icon:hover{
-  color: #007094;
-}
-
-#testimonials{
-  padding: 5% 15%;
-  text-align: center;
-  background-color: #1C8AAE;
+.social-icon{
   color: #fff;
+  margin: 20px 10px;
 }
 
-.testimonial-image{
-  width:10%;
-  border-radius: 100%;
-  margin:20px;
+.social-icon:hover{
+  color: #D0D3D4;
 }
 
-.carousel-item{
-  padding:3% 15%;
-}
 
 footer{
   position: relative;
@@ -107,10 +75,6 @@ footer{
   height: 180px;
   padding: 20px 20px 0px 20px;
   text-align: center;
-}
-
-.social-icon{
-  margin: 20px 10px;
 }
 
 @media(max-width:991px)
@@ -123,12 +87,11 @@ footer{
 }
 
 .login{
-  padding: 7.2% 35%;
+  padding: 7.2% 34.5%;
 }
 
-
 .card{
-  height: 19.66rem;
+  height: 19.65rem;
   width: 30rem;
   color: black;
   opacity: 1;
