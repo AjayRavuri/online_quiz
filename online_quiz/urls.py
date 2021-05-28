@@ -20,4 +20,5 @@ from quiz.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login,name="login"),
+    path('instructions', instructions,name="instructions"),
 ]

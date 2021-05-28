@@ -10,9 +10,11 @@ def login(request):
 		pwd=request.POST['password']
 		try:
 			data=User.objects.get(mail=user,password=pwd)
-			l="<html><head><title>Success</title></head><body><h1 style='color:#fa5432; text-align:center'>Success</h1></body></html>"
-			return HttpResponse(l)
+			return render(request,'instructions.html',{'data':data})
 		except:
 			messages.info(request,'Invalid Credentials')
 			return redirect(login)
 	return render(request,'login.html')
+
+def instructions(request):
+	return render(request,'instructions.html')

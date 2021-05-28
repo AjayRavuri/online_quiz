@@ -90,22 +90,13 @@ footer{
 }
 
 .card{
-  height: 19.65rem;
-  width: 30rem;
-  color: black;
-  opacity: 1;
-  box-shadow: 3px 5px 5px black;
-  transition: 0.5s;
+
 }
 
 .card:hover{
-   box-shadow: 8px 12px 12px black;
+
 }
 
 .button{
   padding-left:350px;
-}
-
-.instru{
-  
 }
