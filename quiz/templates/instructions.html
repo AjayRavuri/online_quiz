@@ -20,6 +20,14 @@
 
 <body>
 
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+
+  function preventback(){window.history.forward();}
+  setTimeout('preventback()',0);
+  window.onunload = function(){null};
+</script>
+
   <section id="title">
 
   <div class="container-fluid">
@@ -58,7 +66,7 @@
       </div>
     </div>
     <br>
-    <p align='center' style="font-family: Cambria;"><button class="btn-success btn-sm" href="" role="button" >Start Test</button></p>
+    <p align='center' style="font-family: Cambria;"><a class="btn-success btn-sm" href="quiz/{{data.mail}}" role="button" >Start Test</a></p>
   </div>
 
 

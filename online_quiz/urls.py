@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login,name="login"),
     path('instructions', instructions,name="instructions"),
+    path('quiz/<str:id>',quiz,name="quiz"),
 ]
