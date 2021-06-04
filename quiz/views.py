@@ -23,18 +23,17 @@ def instructions(request):
 
 def quiz(request,id):
 	c=0
-	data={}
+	data,d=[],[]
 	while(c!=10):
 		j=randint(1,20)
-		if j in data:
+		if j in d:
 			continue
 		else:
+			d.append(j)
 			var =Question.objects.get(id=j)
-			data[j]=[[var.question],[var.op1],[var.op2],[var.op3],[var.op4],[var.correct[-1]]]
 			c+=1
-	data=dict(sorted(data.items(), key = lambda kv:(kv[0])))
-	data["mail"]=id
-	for i in data.values():
-		print(i)
+			di = {'question':str(c)+". "+var.question,'choices':[var.op1,var.op2,var.op3,var.op4],'correctAnswer': int(var.correct[-1])-1}
+			data.append(di)
+
 	data=dumps(data)
 	return render(request,'quiz.html',{'data':data})
