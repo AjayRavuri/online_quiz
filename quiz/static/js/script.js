@@ -198,7 +198,7 @@ $(document).ready(function ()
                 if (currentQuestion == questions.length-1) {
                     $(document).find(".nextButton").prop('disabled','disabled');
                     $(document).find(".quizMessage").text("please press end review");
-                    $(document).find(".quizMessage").slideDown();
+                    $(document).find(".quizMessage").slideDown(1000);
                     viewingAns = 0;
                 }
 
@@ -266,7 +266,6 @@ $(document).ready(function ()
 
             if (clear){
                 window.close();
-                focus.opener.document.write("<p> Your test is ended please close the window </p>");
             }
         }
     });
