@@ -35,5 +35,6 @@ def quiz(request,id):
 			di = {'question':str(c)+". "+var.question,'choices':[var.op1,var.op2,var.op3,var.op4],'correctAnswer': int(var.correct[-1])-1}
 			data.append(di)
 
+	data1 = User.objects.get(mail = id)
 	data=dumps(data)
-	return render(request,'quiz.html',{'data':data})
+	return render(request,'quiz.html',{'data':data,'data1':data1})

@@ -4,9 +4,9 @@ var correctAnswers = 0;
 var quizOver = false;
 var iSelectedAnswer = [];
 var clear;
-var c=120;
+var time=120;
 var t;
-var c_temp=c;
+var time_temp=time;
 var viewMode = 0;
 var focus;
 var endtest;
@@ -19,12 +19,12 @@ var clean;
 // detecting the malpractise and for now it's over active and user should be very causious...
 
 function malpracicefun(){
-  if ( teststatus ){
+  if ( !quizOver ){
     clearTimeout(t);
-    $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
     currentQuestion = 0;
-    c = c_temp;
+    time = time_temp;
     viewResults(currentQuestion);
+    $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
     teststatus = false;
     viewMode = 1;
     viewingAns = 3;
@@ -167,22 +167,8 @@ $(document).ready(function ()
                 }
                 else
                 {
-                    if (confirm("do you want to submit ?")){
-                        clearTimeout(t);
-                        displayScore();
-                        $('#iTimeShow').html('Quiz Time Completed!');
-                        $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
-                        c=c_temp;
-                        $(".preButton").prop('disabled', false);
-                        $(document).find(".preButton").text("View Answer");
-                        $(document).find(".nextButton").text("Attempt Again?");
-                        $(document).find('.clearResponse').text("end test");
-                        quizOver = true;
-                    }
-                    else{
-                        $(document).find('.quizMessage').text("not submit");
-                        $(document).find('.quizMessage').slideDown();
-                    }
+                  teststatus = false;
+                  $('#submit-test').modal('show');
                 }
             }
 
@@ -219,6 +205,7 @@ $(document).ready(function ()
             hideScore();
 
             $('#iTimeShow').html('Time Remaining:');
+            clean = setInterval("myFunction()", 500);
             timedCount();
 
             viewingAns = 0;
@@ -262,15 +249,25 @@ $(document).ready(function ()
 
         // to end the test if pressed...
         else{
-            var clear = confirm('do you want to end test ?');
-
-            if (clear){
-                window.close();
-            }
+          $('#conformation').modal('show');
         }
     });
 });
 
+$('#submit-btn').click(function(){
+  clearTimeout(t);
+  displayScore();
+  $('#timer').slideUp();
+  $('#iTimeShow').html('Quiz Time Completed!');
+  time=time_temp;
+
+
+  $(".preButton").prop('disabled', false);
+  $(document).find(".preButton").text("View Answer");
+  $(document).find(".nextButton").text("Attempt Again?");
+  $(document).find('.clearResponse').text("end test");
+  quizOver = true;
+});
 
 //timer action
 function timedCount()
@@ -283,14 +280,14 @@ function timedCount()
         $(document).find('#timer').slideDown();
 
         //caluculating hours and minutes from the seconds specified during declaration...
-        var hours = parseInt( c / 3600 ) % 24;
-        var minutes = parseInt( c / 60 ) % 60;
-        var seconds = c % 60;
+        var hours = parseInt( time / 3600 ) % 24;
+        var minutes = parseInt( time / 60 ) % 60;
+        var seconds = time % 60;
 
         //formating the view of the timer...
         var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
         var z;
-        if (c<60){
+        if (time<60){
                 z = setTimeout(function(){
                     $('#timer').slideUp();
                 },750);
@@ -300,7 +297,7 @@ function timedCount()
         $('#timer').html(result);
 
         // functionality of timer when it ticks to zero...
-        if(c == 0 )
+        if(time == 0 )
         {
             clearTimeout(z);
             //displaying the score when timer is zero...
@@ -309,10 +306,11 @@ function timedCount()
             clearTimeout(t);
 
             // displaying the message of timer as Quiz is completed and score below it...
+            $('#timer').slideUp();
             $('#iTimeShow').html('Quiz Completed!');
 
             // reinitating the timer for next attempt...
-            c=c_temp;
+            time=time_temp;
 
             //making the previous button active if it is disabled...
             $(".preButton").prop('disabled', false);
@@ -334,7 +332,7 @@ function timedCount()
         }
 
 
-        c = c - 1;
+        time = time - 1;
         t = setTimeout(function()
         {
             timedCount()
@@ -371,7 +369,7 @@ function displayCurrentQuestion()
         choice = questions[currentQuestion].choices[i] ;
 
         if(iSelectedAnswer[currentQuestion] == i) {
-            if (c != 0) {
+            if (time != 0) {
                 $('<li><input type="radio" class="radio-inline" checked="checked"  value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
             }
 
@@ -382,7 +380,7 @@ function displayCurrentQuestion()
         }
         else {
 
-            if (c != 0) {$('<li ><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);}
+            if (time != 0) {$('<li ><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);}
 
             else{
             $('<li><input type="radio" class="radio-inline" disabled = "disabled" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
@@ -418,7 +416,6 @@ function displayScore()
 function hideScore()
 {
     $(document).find(".result").slideUp();
-    $(document).find('#timer').slideUp();
 }
 
 // This displays the current question AND the choices
