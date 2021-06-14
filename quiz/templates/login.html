@@ -69,7 +69,7 @@
       <div class="card-header">
         <div class="container">
           <img src='{% static "images/logo.png" %}' alt="Logo" style="height:3.5rem; padding-left:127px;">
-          <form action='{% url "login" %}' method="POST" class="form-signin">
+          <form action='{% url "login" %}' method="POST" class="form-signin needs-validation" novalidate>
           {% csrf_token %}
           <div class="row">
             <div class="col-12">
@@ -120,6 +120,7 @@
 </body>
 
 <script>
+<<<<<<< HEAD
 
 
 const togglePassword = document.querySelector('#togglePassword');
@@ -131,6 +132,26 @@ $('#togglePassword').hover(function (e) {
     // toggle the eye / eye slash icon
     this.classList.toggle('bi-eye');
 });
+=======
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
 </script>
 
 </html>

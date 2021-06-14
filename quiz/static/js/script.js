@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var currentQuestion = 0;// current question pointer...
 var viewingAns = 0;//status of viewmode...
 var correctAnswers = 0; // correct ans counter...
@@ -11,9 +12,29 @@ var malpractice = false;// malpractise status...
 var clean; // timeinterval for focus variable...
 var widthCheck = window.innerWidth; // to give provision to enlarging the width without malpractise detection...
 var heigthCheck = window.innerHeight;// to give provision to enlarge height without malpractise detection...
+=======
+var currentQuestion = 0;
+var viewingAns = 0;
+var correctAnswers = 0;
+var quizOver = false;
+var iSelectedAnswer = [];
+var clear;
+var time=120;
+var t;
+var time_temp=time;
+var viewMode = 0;
+var focus;
+var endtest;
+var teststatus = false;
+var malpractice = true;
+var online = true;
+var netissue = false;
+var clean;
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
 
 // detecting the malpractise and for now it's over active and user should be very causious...
 function malpracicefun(){
+<<<<<<< HEAD
   if (!quizOver){
     malpractice = true;
     correctAnswers = -1;
@@ -23,6 +44,15 @@ function malpracicefun(){
     viewResults(currentQuestion);
     correctAnswers = 0;
     $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
+=======
+  if ( !quizOver ){
+    clearTimeout(t);
+    currentQuestion = 0;
+    time = time_temp;
+    viewResults(currentQuestion);
+    $('#timer').html("You scored: " + correctAnswers + " out of: " + questions.length);
+    teststatus = false;
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
     viewMode = 1;
     viewingAns = 3;
     quizOver = true;
@@ -107,6 +137,7 @@ $(function ()
   {
     if (!quizOver)
     {
+<<<<<<< HEAD
       var val = $("input[type='radio']:checked").val();
       if (val == undefined)
       {
@@ -122,6 +153,78 @@ $(function ()
         if(currentQuestion >= 1) {
           $('.preButton').prop("disabled", false);
         }
+=======
+        if (!quizOver)
+        {
+
+            var val = $("input[type='radio']:checked").val();
+
+            if (val == undefined)
+            {
+                $(document).find(".quizMessage").text("Please select an answer");
+                $(document).find(".quizMessage").slideDown();
+            }
+            else
+            {
+                // TODO: Remove any message -> not sure if this is efficient to call this each time....
+                $(document).find(".quizMessage").slideUp();
+
+                currentQuestion++; // Since we have already displayed the first question on DOM ready
+                if(currentQuestion >= 1) {
+                      $('.preButton').prop("disabled", false);
+                }
+                if (currentQuestion < questions.length)
+                {
+                    if (currentQuestion == questions.length-1) { $(document).find(".nextButton").text("Submit");}
+                    displayCurrentQuestion();
+
+                }
+                else
+                {
+                  teststatus = false;
+                  $('#submit-test').modal('show');
+                }
+            }
+
+        }
+        else if(viewMode == 1){
+            currentQuestion++;
+
+            if (currentQuestion == 1) { $(".preButton").attr('disabled',false); }
+
+
+            if(currentQuestion < questions.length){
+
+                if (currentQuestion == questions.length-1) {
+                    $(document).find(".nextButton").prop('disabled','disabled');
+                    $(document).find(".quizMessage").text("please press end review");
+                    $(document).find(".quizMessage").slideDown(1000);
+                    viewingAns = 0;
+                }
+
+                viewResults(currentQuestion);
+            }
+        }
+        else if(malpractice)
+        {   // quiz is over and clicked the next button (which now displays 'Attempt Again?')
+
+            clearTimeout(t);
+            if(viewingAns == 3){ return false; }
+            quizOver = false;
+            teststatus = true;
+            netissue = false;
+
+            $(document).find(".quizMessage").slideUp();
+            resetQuiz();
+            hideScore();
+
+            $('#iTimeShow').html('Time Remaining:');
+            clean = setInterval("myFunction()", 500);
+            timedCount();
+
+            viewingAns = 0;
+            viewMode =0;
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
 
         if (currentQuestion < questions.length)
         {
@@ -154,6 +257,7 @@ $(function ()
     }
   });
 
+<<<<<<< HEAD
   //clear button action
   $(this).find('.clearResponse').click(function(){
     if(!quizOver){
@@ -224,6 +328,30 @@ function displayScore()
   $(".quizContainer > .result").html("You scored: " + correctAnswers + " out of: " + questions.length);
   $(".quizContainer > .result").slideDown();
 }
+=======
+        // to end the test if pressed...
+        else{
+          $('#conformation').modal('show');
+        }
+    });
+});
+
+$('#submit-btn').click(function(){
+  clearTimeout(t);
+  displayScore();
+  $('#timer').slideUp();
+  $('#iTimeShow').html('Quiz Time Completed!');
+  time=time_temp;
+
+
+  $(".preButton").prop('disabled', false);
+  $(document).find(".preButton").text("View Answer");
+  $(document).find(".nextButton").text("Attempt Again?");
+  $(document).find('.clearResponse').text("end test");
+  quizOver = true;
+});
+
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
 //timer action
 function timedCount()
     {
@@ -233,6 +361,10 @@ function timedCount()
         var hours = parseInt( time / 3600 ) % 24;
         var minutes = parseInt( time / 60 ) % 60;
         var seconds = time % 60;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
         //formating the view of the timer...
         var result = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds  < 10 ? "0" + seconds : seconds);
         var z;
@@ -257,6 +389,10 @@ function timedCount()
             $('#iTimeShow').html('Quiz Completed!');
             // reinitating the timer for next attempt...
             time=time_temp;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
             //making the previous button active if it is disabled...
             $(".preButton").prop('disabled', false);
             //making the button of previous button as viewanswers to check the result and next button to attempt again..
@@ -268,6 +404,11 @@ function timedCount()
             quizOver = true;
             return false;
         }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
         time = time - 1;
         t = setTimeout(function()
         {
@@ -304,7 +445,13 @@ function displayCurrentQuestion()
             }
         }
         else {
+<<<<<<< HEAD
             if (time != 0) {$('<li ><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);}
+=======
+
+            if (time != 0) {$('<li ><input type="radio" class="radio-inline" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);}
+
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
             else{
             $('<li><input type="radio" class="radio-inline" disabled = "disabled" value=' + i + ' name="dynradio" />' +  ' ' + choice  + '</li>').appendTo(choiceList);
             }
@@ -312,6 +459,14 @@ function displayCurrentQuestion()
     }
 }
 // To hide the score that is showing at the center of the screen...
+<<<<<<< HEAD
+=======
+function hideScore()
+{
+    $(document).find(".result").slideUp();
+}
+
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
 // This displays the current question AND the choices
 function viewResults(currentQuestion)
 {

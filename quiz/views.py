@@ -47,6 +47,7 @@ def quiz(request,id):
 	else:
 		return render(request,'thanks.html',{'data1':data1})
 
+<<<<<<< HEAD
 def thanks(re,id):
 	data = User.objects.get(mail=id)
 	return render(re,'thanks.html',{'data1':data})
@@ -67,3 +68,8 @@ def update(request,id):
 					data.grade = 'F'
 	data.save()
 	return HttpResponseRedirect('/')
+=======
+	data1 = User.objects.get(mail = id)
+	data=dumps(data)
+	return render(request,'quiz.html',{'data':data,'data1':data1})
+>>>>>>> dacbb260cd7bb2ca29e81f9ed388fa649f352663
