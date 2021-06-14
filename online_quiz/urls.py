@@ -16,9 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from quiz.views import *
-import re
 
-var = r'(attempt)+'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login,name="login"),
