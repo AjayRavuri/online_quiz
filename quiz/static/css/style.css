@@ -9,17 +9,15 @@ h1 {
     font-family:'Gabriola', serif;
     text-align: center;
 }
+
 ul {
     list-style: none;
 }
+
 li {
     font-family:'Cambria', serif;
     font-size: 1.5em;
     position: relative;
-}
-
-li:focus{
-    background-color: blue;
 }
 
 input[type=radio] {
@@ -27,7 +25,6 @@ input[type=radio] {
     width: 20px;
     height: 2em;
 }
-
 
 p {
     font-family:'Gabriola', serif;
@@ -127,7 +124,8 @@ font-family:"Georgia", Arial, sans-serif;
     height: auto;
     margin: auto;
     border-radius: 6px;
-    background-color: #f3dc45;
+    background-color: #34495E;
+    color: #fff;
     text-align: center;
 }
 
@@ -171,3 +169,48 @@ font-family:"Georgia", Arial, sans-serif;
 }
 
 /* End of Quiz Classes */
+
+#title{
+  background-color: #34495E;
+  color: #fff;
+}
+
+.container-fluid{
+  padding: 3% 7% 0;
+  bottom: 40%;
+}
+
+h1{
+  font-family: "Montserrat-Black";
+  line-height: 1.5;
+}
+
+.navbar{
+  padding :0 0 4.5rem;
+}
+
+.navbar-brand{
+  font-family: Ubuntu;
+  font-weight: bold
+}
+
+.nav-item{
+  padding: 0 18px 0 58vw;
+}
+
+.nav-link{
+  font-size: 1.2rem;
+  font-family: "Montserrat-light"
+}
+
+@media(max-width:991px)
+{
+  #title{
+    text-align: center;
+  }
+
+
+}
+.card{
+
+}

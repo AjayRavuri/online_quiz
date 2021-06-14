@@ -4,6 +4,9 @@
 
 <head>
   <meta charset="utf-8 " content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Instructions</title>
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
@@ -19,14 +22,6 @@
 </head>
 
 <body>
-
-<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-<script type="text/javascript">
-
-  function preventback(){window.history.forward();}
-  setTimeout('preventback()',0);
-  window.onunload = function(){null};
-</script>
 
   <section id="title">
 
@@ -55,22 +50,32 @@
     <div class="card">
       <h1 class="card-header" align='center' >Instructions</h1>
       <div class="card-body">
-        <h5 class="card-text" style="font-family: Cambria;">1. Your test will be conducted in full screen mode.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">2. If you try to exit the full screen mode by switching your browsers, your test will automatically get submitted.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">3. Do not refresh the page and do not click the back button.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">4. Make sure that you only start this test once you are on the latest version of Chrome browser.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">5. Once you click on Start Test button, you will be redirected to the test questions page and a timer would start.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">6. There are 10 Questions in the test. You need to submit the solution within the allocated time.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">7. You can view the answres after the submission of your answres.</h5>
-        <h5 class="card-text" style="font-family: Cambria;">8. Once the test time expires, your saved questions will be auto-submitted for evaluation.</h5>
+        <h3 class="card-text" style="font-family: Cambria;" align="center">Please read the all Instructions carefully</h3>
+        <h3 class="card-text" style="font-family: Cambria;">Steps For Accessing Your Quiz</h3>
+        <h5 class="card-text" style="font-family: Cambria;">✅ Close all programs, including email.</h5>
+        <h5 class="card-text" style="font-family: Cambria;">✅ Click "Start Test" at the bottom of the screen, to start your test.</h5>
+        <h3 class="card-text" style="font-family: Cambria;"><br>Before starting the exam</h3>
+        <h5 class="card-text" style="font-family: Cambria;">✅ Please verify that the student's login name appears correctly within the User ID box which is present top rightside corner.</h5>
+        <h3 class="card-text" style="font-family: Cambria;"><br>During the exam</h3>
+        <h5 class="card-text" style="font-family: Cambria;">✅ The student may not use his or her textbook, course notes, or receive help from a proctor or any other outside source.</h5>
+        <h5 class="card-text" style="font-family: Cambria;">✅ There are 10 Questions in the test. You need to submit the solution within the allocated time.</h5>
+        <h5 class="card-text" style="font-family: Cambria;">❌ The student may not switch tabs, or donot open any files or apps in the device which leads to the malpractice then the quiz ends.</h5>
+        <h5 class="card-text" style="font-family: Cambria;">❌ Do not reduce the size of the window. If so you will be marked as malpractice.</h5>
+        <h5 class="card-text" style="font-family: Cambria;">❌ Do not click the “End Test” button unless you want to leave early.</h5>
+        <h3 class="card-text" style="font-family: Cambria;"><br>Minimum Browser Requirements</h3>
+        <h5 class="card-text" style="font-family: Cambria;">✅ Internet Explorer 9, Firefox 1, or Google Chrome are required to log into the exam.</h5>
+        <h3 class="card-text" style="font-family: Cambria;"><br>Support</h3>
+        <h5 class="card-text" style="font-family: Cambria;">❓ If you have any questions, please contact an academic advisor at 123-456-7890 or email infelearn@quiz.edu</h5>
       </div>
     </div>
     <br>
-    <p align='center' style="font-family: Cambria;"><a class="btn-success btn-sm" href="" onclick="window.open('quiz/{{data.mail}}','_blank','width = 10000vw,height = 10000vh');" role="button" >Start Test</a></p>
+        <p align='center' style="font-family: Cambria;"><a class="btn-success btn-sm" href=''onclick="window.open('quiz/{{data.mail}}','_blank','width = 10000vw,height = 10000vh');" role="button" >Start Test</a></p>
   </div>
-
-
-
 </body>
+<script type="text/javascript">
 
+  function preventback(){window.history.forward();}
+  setTimeout('preventback()',0);
+  window.onunload = function(){null};
+</script>
 </html>

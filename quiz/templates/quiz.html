@@ -4,21 +4,109 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Righteous&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>JS Quiz</title>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+
+<title>Infelearn</title>
 </head>
 <body id = "focusDetector">
+
+  <section id="title">
+
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <a class="navbar-brand" style="font-size:3.5rem; font-family: 'Acme', sans-serif;"> Infelearn </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" style="font-size:20px;">
+          {{data1.mail}}
+        </li>
+      </ul>
+      </div>
+
+    </nav>
+  </div>
+  </section>
+
+  <div id="conformation" class="modal fade" role="dialog">
+      <div class="modal-dialog rounded-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title text-center">End Test</h3>
+            <button type="button" class="close" data-dismiss="modal" tabindex="0">&times</button>
+          </div>
+          <div class="modal-body">
+            <p id="msg1" style="font-size: 22px;">Do you want to end test?</p>
+            <p id="msg" style="font-size: 18px;"></p>
+          </div>
+          <footer class="modal-footer">
+            <button type="button" class="btn btn-danger" id="submit" onclick="window.open('thanks/{{data1.mail}}','_blank','width= 10000vw,height= 10000vh');window.close();">End</button>
+            <button type= "button" class="btn btn-default" data-dismiss = "modal">cancel</button>
+          </footer>
+        </div>
+      </div>
+  </div>
+  <div id="submit-test" class="modal fade" role="dialog">
+      <div class="modal-dialog rounded-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title text-center">Submit</h3>
+            <button type="button" class="close" data-dismiss="modal" tabindex="0">&times</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size: 22px;">Do you want to submit?</p>
+          </div>
+          <footer class="modal-footer">
+              <button type="submit" class="btn btn-danger" id="submit-btn" data-dismiss = "modal">Submit</button>
+            <button type= "button" class="btn btn-default" data-dismiss = "modal">cancel</button>
+          </footer>
+        </div>
+      </div>
+  </div>
+  <div id="attempts" class="modal fade" role="dialog">
+      <div class="modal-dialog rounded-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title text-center">Attempt again</h3>
+            <button type="button" class="close" data-dismiss="modal" tabindex="0">&times</button>
+          </div>
+          <div class="modal-body">
+            <p id="Amsg1"style="font-size: 22px;">Do you want to Attempt Again ?</p>
+            <p id="Amsg"style="font-size: 18px;"></p>
+          </div>
+          <footer class="modal-footer">
+              <button type="submit" class="btn btn-danger Abtn" data-dismiss = "modal" onclick="window.open('/quiz/{{data1.mail}}','_blank','width= 10000vw,height= 10000vh');window.close();">Attempt Again</button>
+            <button type= "button" class="btn btn-default" data-dismiss = "modal">cancel</button>
+          </footer>
+        </div>
+      </div>
+  </div>
+<div class="pad" style="padding:4% 10% 0;">
     <div class="quizContainer container-fluid well well-lg">
         <div id="quiz1" class="text-center">
-			<h3>Infele@rn</h3>
-			<center><img class="img-responsive" height="180" width="180" src="{% static 'images/quiz_img.jpg' %}" alt="Logo"></center>
-			<h4 style="color:#5f08ff;position:absolute;left:70%;top:20%;" align="center" ><span id="iTimeShow">Time Remaining: </span><br><span id='timer' style="font-size:25px;"></span></h4>
-			<h2 id="name"> Quiz</h2>
+      <center><img class="img-responsive" height="180" width="180" src="{% static 'images/quiz_img.jpg' %}" alt="Logo"></center>
+			<h4 style="color:#5f08ff;font-family: Cambria;position:absolute;left:76%;top:30%;" align="center" ><span id="iTimeShow">Time Remaining: </span><br><span id='timer' style="font-size:25px;"></span></h4>
+			<br><br>
 		</div>
 
         <div class="question"></div>
@@ -33,7 +121,7 @@
 
 
     <script type="text/javascript">
-    var questions = JSON.parse("{{data|escapejs}}")
+    var questions = JSON.parse("{{data|escapejs}}");
         function checkKeyCode(evt)
         {
 
@@ -57,22 +145,59 @@ document.onkeydown=checkKeyCode;
         }
         else
         {
-            event.returnValue = false
+            event.returnValue = false;
         }
     }
-</script>
-    <script type="text/javascript">
-  function openFullscreen() {
-    var elem = document.documentElement;
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
+
+var url = '{% url "update" data1.mail %}';
+function update(){
+  var data = {'correctAnswers':correctAnswers};
+  $.get(url,data);
+}
+
+function attempt(){
+  if({{data1.attempts}} > 0 && !malpractice){
+    $('#Amsg').html({{data1.attempts}}+' Attempts Remaining');
+    $('#attempts').modal('show');
+  }
+  else if(malpractice){
+    $('#msg1').html('NOt Allowed...🚫');
+    $('#msg').html('Malpractise found...');
+    $('#conformation').modal('show');
+  }
+  else{
+    $('#msg1').html('you are out of attempts...');
+    $('#conformation').modal('show');
+  }
+};
+
+function end(malpractice){
+  if({{data1.attempts}} > 0 && !malpractice){
+    $('#msg').html({{data1.attempts}}+' more attempts');
+  }
+  else if (malpractice){
+    $('#msg').html('No attempts remaining due to malpractise');
+  }
+  else{
+    $('#msg').html('No attempts remaining');
   }
 }
-</script>
 
+$('#submit-btn').click(function(){
+  update();
+  clearTimeout(t);
+  displayScore();
+  $('#timer').slideUp();
+  $('#iTimeShow').html('Quiz Time Completed!');
+  time=time_temp;
+
+
+  $(".preButton").prop('disabled', false);
+  $(document).find(".preButton").text("View Answer");
+  $(document).find(".nextButton").text("Attempt Again?");
+  $(document).find('.clearResponse').text("end test");
+  quizOver = true;
+});
+</script>
 </body>
 </html>
